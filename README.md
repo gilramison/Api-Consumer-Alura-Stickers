@@ -14,6 +14,7 @@ The solution presented by ImdbStickers is to generate stickers based on the user
 * Search by name
 * Display detailed information about a movie
 * Generate stickers based on user rating of the movie
+* consume the endpoints from: ImdbStickers-Springboot-Api
 
 
 ## 🚀 Technologies Used
