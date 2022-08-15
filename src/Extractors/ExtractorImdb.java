@@ -1,6 +1,11 @@
+package Extractors;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import Helpers.Content;
+import Helpers.ContentAssistidos;
+import Helpers.JsonParser;
 
 public class ExtractorImdb implements ExtractorContent {
     
@@ -16,9 +21,11 @@ public class ExtractorImdb implements ExtractorContent {
 
     for (Map<String,String> atributos : ListaDeAtributos) {
 
-        String urlImagem = atributos.get("image").replaceAll("(@+)(.*).jpg$", "$1.jpg"); //refatora a url para pegar a imagem poster
+        String urlImagem = atributos.get("image");//.replaceAll("(@+)(.*).jpg$", "$1.jpg"); //refatora a url para pegar a imagem poster
         String titulo = atributos.get("title");
-        var content = new Content(titulo, urlImagem);
+        String notaOficialTemp = atributos.get("imDbRating");
+        Double notaOficial = Double.valueOf(notaOficialTemp);
+        var content = new Content(titulo, urlImagem,notaOficial,null);
 
         conteudosfinais.add(content);
        
@@ -26,6 +33,11 @@ public class ExtractorImdb implements ExtractorContent {
 
 
     return conteudosfinais;
+    }
+
+    @Override
+    public List<ContentAssistidos> extraiConteudosAssistidos(String jsonTemp) {        
+        return null;
     }
 
 }
